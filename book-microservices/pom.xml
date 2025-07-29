@@ -32,6 +32,14 @@
 
     <sonar.organization>maneesh0021</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
+      <!-- other properties -->
+      <sonar.coverage.exclusions>
+        **/ApiGatewayApplication.java,
+        **/EurekaServerApplication.java,
+        **/BookServiceApplication.java,
+        **/ModelMapperConfig.java
+      </sonar.coverage.exclusions>
   </properties>
 
   <build>
