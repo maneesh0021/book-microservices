@@ -5,4 +5,8 @@ public class BookNotFoundException extends RuntimeException {
     public BookNotFoundException() {
         super("Book with the given ID not found.");
     }
+
+    public BookNotFoundException(String message) {
+        super(message);
+    }
 }
