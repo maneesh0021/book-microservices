@@ -24,34 +24,32 @@ class GlobalExceptionHandlerTest {
     @Test
     void testHandleBookNotFound() {
         BookNotFoundException ex = new BookNotFoundException("Book ID not found in database");
-
-        ResponseEntity<Map<String, Object>> response =
-                handler.handleBookNotFound(ex, mockRequest);
+        ResponseEntity<Map<String, Object>> response = handler.handleBookNotFound(ex, mockRequest);
 
         assertEquals(404, response.getStatusCodeValue());
+        assertNotNull(response.getBody());
+
         Map<String, Object> body = response.getBody();
-        assertNotNull(body);
+        assertEquals(404, body.get("status"));
         assertEquals("Not Found", body.get("error"));
         assertEquals("Book ID not found in database", body.get("message"));
         assertEquals("/books/42", body.get("path"));
         assertNotNull(body.get("timestamp"));
-        assertEquals(404, body.get("status"));
     }
 
     @Test
     void testHandleGenericException() {
         Exception ex = new RuntimeException("Something went wrong");
-
-        ResponseEntity<Map<String, Object>> response =
-                handler.handleGenericException(ex, mockRequest);
+        ResponseEntity<Map<String, Object>> response = handler.handleGenericException(ex, mockRequest);
 
         assertEquals(500, response.getStatusCodeValue());
+        assertNotNull(response.getBody());
+
         Map<String, Object> body = response.getBody();
-        assertNotNull(body);
+        assertEquals(500, body.get("status"));
         assertEquals("Internal Server Error", body.get("error"));
         assertEquals("Something went wrong", body.get("message"));
         assertEquals("/books/42", body.get("path"));
         assertNotNull(body.get("timestamp"));
-        assertEquals(500, body.get("status"));
     }
 }
