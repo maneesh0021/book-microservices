@@ -28,6 +28,7 @@
       **/ApiGatewayApplication.java,
       **/EurekaServerApplication.java
     </sonar.coverage.exclusions>
+      <sonar.coverage.exclusions>**/dto/**,**/model/**,**/BookServiceApplication.java,**/config/**</sonar.coverage.exclusions>
   </properties>
 
   <dependencyManagement>
