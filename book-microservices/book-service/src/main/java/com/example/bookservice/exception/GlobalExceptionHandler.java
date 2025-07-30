@@ -21,8 +21,7 @@ public class GlobalExceptionHandler {
         errorBody.put("status", HttpStatus.NOT_FOUND.value());
         errorBody.put("error", "Not Found");
         errorBody.put("message", ex.getMessage());
-        errorBody.put("path", request.getRequestURI()); //  dynamic path here
-
+        errorBody.put("path", request.getRequestURI());
         return new ResponseEntity<>(errorBody, HttpStatus.NOT_FOUND);
     }
 

@@ -1,8 +1,11 @@
-    package com.example.bookservice.exception;
+package com.example.bookservice.exception;
 
-    public class BookNotFoundException extends RuntimeException {
-
-        public BookNotFoundException() {
-            super("Book with the given ID not found.");
-        }
+public class BookNotFoundException extends RuntimeException {
+    public BookNotFoundException() {
+        super("Book not found.");
     }
+
+    public BookNotFoundException(String message) {
+        super(message);
+    }
+}
